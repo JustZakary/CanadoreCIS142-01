@@ -7,7 +7,6 @@
 #include <time.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include <unistd.h> // Imports "system("@cls")" and "system("pause")" function
 
 int IsNumberLower(int guess, int num);
 void IsNumberCorrect(int guess, int num, char play);
