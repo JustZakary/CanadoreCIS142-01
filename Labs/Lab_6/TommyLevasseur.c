@@ -3,7 +3,6 @@
 // Tuesday, Nov 8, 2022
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <ctype.h>
 #include <stdbool.h>
 #include <unistd.h> // Imports "system("cls||clear")" and "system("pause")" function
