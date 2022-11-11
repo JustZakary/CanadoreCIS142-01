@@ -1,4 +1,4 @@
-// Midterm Test 1
+// Lab 6
 // By Zakary Loney
 // Nov 11th, 2022
 #include <stdio.h>
@@ -52,4 +52,5 @@ int main()
         printf("Would you like to play again? (y/n): ");
         scanf(" %c", &replay);
     } while (replay == 'y' || replay == 'Y');
+    return 0;
 }
