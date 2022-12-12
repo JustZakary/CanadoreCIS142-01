@@ -1,0 +1,93 @@
+//Room 
+var FloorAreaMSquared = 64 
+var RoomHeight = 3 
+var PerimeterOfRoom = √ FloorAreaMSquared * 4
+var AreaOfWallsMSquared = PerimeterOfRoom * RoomHeight
+
+//Windows
+var WindowArea = (1.5 * 1) 
+var WindowPerimeter = (1.5 + 1) * 2 
+var NumberOfWindows = 2 
+var TotalWindowPerimeter = WindowPerimeter * NumberOfWindows 
+var TotalWindowAreaMSquared = NumberOfWindows * WindowArea 
+
+ 
+//Doors
+var DoorArea = (2 * 1) 
+var DoorPerimeter = (2+ 1) * 2 
+var NumberOfDoors = 1 
+var TotalDoorsPerimeter = DoorPerimeter * NumberOfDoors 
+var TotalDoorAreaMSquared = NumberOfDoors * DoorsArea 
+
+//Ceiling Paint Cans ------------------------------------
+var SpecialCeilingPaintLargeMSquared = 10
+var SpecialCeilingPaintLargePrice = $30.75
+
+var SpecialCeilingPaintSmallMSquared = 5
+var SpecialCeilingPaintSmallPrice = $18.25
+
+//Base-coat Paint Cans ------------------------------------
+var SpecialBasePaintLargeMSquared = 12
+var SpecialBasePaintLargePrice = $40.75
+
+var SpecialBasePaintSmallMSquared = 6
+var SpecialBasePaintSmallPrice = $25.25
+
+//Finishing Paint Cans ------------------------------------
+var SpecialFinishingPaintLargeMSquared = 15
+var SpecialFinishingPaintLargePrice = $47.75
+
+var SpecialFinishingPaintSmallMSquared = 7.5
+var SpecialFinishingPaintSmallPrice = $30.25
+
+//Paint
+var TotalTapeNeeded = PerimeterOfRoom + TotalWindowPerimeter + TotalDoorsPerimeter
+var TotalPaintAbleArea = AreaOfWallsMSquared - (TotalWindowAreaMSquared + TotalDoorAreaMSquared)
+
+
+//Ceiling Paint
+var CeilingPaintArea = FloorAreaMSquared * 2
+if(CeilingPaintArea / SpecialCeilingPaintLargeMSquared % 1 >= SpecialFinishingPaintSmallMSquared) then //if the remainder is greater than or equal to the small can size
+    var NumberOfSpecialCeilingPaintLargeCansNeeded = CeilingPaintArea / SpecialCeilingPaintLargeMSquared
+    var NumberOfSpecialCeilingPaintSmallCansNeeded = 1
+else
+    var NumberOfSpecialCeilingPaintLargeCansNeeded = CeilingPaintArea / SpecialCeilingPaintLargeMSquared + 1
+
+//Base-coat Paint
+var BasePaintArea = TotalPaintAbleArea
+if(BasePaintArea / SpecialBasePaintLargeMSquared % 1 >= SpecialBasePaintSmallMSquared) then //if the remainder is greater than or equal to the small can size
+    var NumberOfSpecialBasePaintLargeCansNeeded = BasePaintArea / SpecialBasePaintLargeMSquared
+    var NumberOfSpecialBasePaintSmallCansNeeded = 1
+else
+    var NumberOfSpecialBasePaintLargeCansNeeded = BasePaintArea / SpecialBasePaintLargeMSquared + 1
+
+//Finishing Paint
+var FinishingPaintArea =TotalPaintAbleArea * 2
+if(FinishingPaintArea / SpecialFinishingPaintLargeMSquared % 1 >= SpecialFinishingPaintSmallMSquared) then //if the remainder is greater than or equal to the small can size
+    var NumberOfSpecialFinishingPaintLargeCansNeeded = FinishingPaintArea / SpecialFinishingPaintLargeMSquared
+    var NumberOfSpecialFinishingPaintSmallCansNeeded = 1
+else
+    var NumberOfSpecialFinishingPaintLargeCansNeeded = FinishingPaintArea / SpecialFinishingPaintLargeMSquared + 1
+
+//Tape
+totalTapeRollsNeeded = TotalTapeNeeded / 50 + || TotalTapeNeeded % 50 > 0 //if the remainder is greater than 0, add 1 to the total rolls needed
+
+//Calculate Total Cost
+var totalCost = 0
+totalCost = totalCost + (NumberOfSpecialCeilingPaintLargeCansNeeded * SpecialCeilingPaintLargePrice)
+totalCost = totalCost + (NumberOfSpecialCeilingPaintSmallCansNeeded * SpecialCeilingPaintSmallPrice)
+totalCost = totalCost + (NumberOfSpecialBasePaintLargeCansNeeded * SpecialBasePaintLargePrice)
+totalCost = totalCost + (NumberOfSpecialBasePaintSmallCansNeeded * SpecialBasePaintSmallPrice)
+totalCost = totalCost + (NumberOfSpecialFinishingPaintLargeCansNeeded * SpecialFinishingPaintLargePrice)
+totalCost = totalCost + (NumberOfSpecialFinishingPaintSmallCansNeeded * SpecialFinishingPaintSmallPrice)
+totalCost = totalCost + (totalTapeRollsNeeded * 3.50)
+
+//Output
+print("Ceiling Paint Large Cans Needed: " + NumberOfSpecialCeilingPaintLargeCansNeeded)
+print("Ceiling Paint Small Cans Needed: " + NumberOfSpecialCeilingPaintSmallCansNeeded)
+print("Base-coat Paint Large Cans Needed: " + NumberOfSpecialBasePaintLargeCansNeeded)
+print("Base-coat Paint Small Cans Needed: " + NumberOfSpecialBasePaintSmallCansNeeded)
+print("Finishing Paint Large Cans Needed: " + NumberOfSpecialFinishingPaintLargeCansNeeded)
+print("Finishing Paint Small Cans Needed: " + NumberOfSpecialFinishingPaintSmallCansNeeded)
+print("Tape Rolls Needed: " + totalTapeRollsNeeded)
+print("Total Cost: $" + totalCost)
